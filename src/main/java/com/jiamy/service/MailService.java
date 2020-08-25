@@ -1,6 +1,7 @@
 package com.jiamy.service;
 
 import com.jiamy.pojo.User;
+import org.springframework.stereotype.Component;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -11,7 +12,7 @@ import java.time.format.DateTimeFormatter;
  * @Description :
  * @Create on : 2020/8/22 15:28
  **/
-
+@Component
 public class MailService {
     private ZoneId zoneId = ZoneId.systemDefault();
 

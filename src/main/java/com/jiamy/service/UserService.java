@@ -1,6 +1,8 @@
 package com.jiamy.service;
 
 import com.jiamy.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,9 +13,14 @@ import java.util.List;
  * @Description :
  * @Create on : 2020/8/22 15:34
  **/
-
+@Component
 public class UserService {
+
     private MailService mailService;
+
+    public UserService(@Autowired MailService mailService){
+        this.mailService = mailService;
+    }
 
     public void setMailService(MailService mailService) {
         this.mailService = mailService;
