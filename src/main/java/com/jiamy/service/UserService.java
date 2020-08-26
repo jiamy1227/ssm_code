@@ -1,8 +1,11 @@
 package com.jiamy.service;
 
+import com.jiamy.annotation.MetricTime;
 import com.jiamy.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +36,7 @@ public class UserService {
             );
 
 
+    @Transactional(rollbackFor = {RuntimeException.class},propagation = Propagation.REQUIRED)
     public User login(String email, String password) {
         System.out.println(email+password);
         for (User user : users) {
@@ -42,6 +46,13 @@ public class UserService {
             }
         }
         throw new RuntimeException("login failed.");
+    }
+
+    @MetricTime(value ="sleepTime")
+    public void sleepTime() throws InterruptedException {
+        System.out.println("sleepTime开始...");
+        Thread.sleep(2000);
+        System.out.println("sleepTime结束...");
     }
 
     public User getUser(long id) throws Exception {

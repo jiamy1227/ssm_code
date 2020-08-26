@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * @Create on : 2020/8/25 17:02
  **/
 
-@Component
+//@Component
 public class AppService {
     @Value("classpath:/logo.txt")
     private Resource resource;
